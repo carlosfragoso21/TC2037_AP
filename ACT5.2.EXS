@@ -65,7 +65,7 @@ defmodule Hw.Primes do #main module
   end
   def calc_speedup()do
     (:timer.tc(fn -> Hw.Primes.sum_primes(5000000) end) |> elem(0) |> Kernel./(1_000_000)) /
-    (:timer.tc(fn -> Hw.Primes.sum_primes_parallel(5000000, ) end) |> elem(0) |> Kernel./(1_000_000))
+    (:timer.tc(fn -> Hw.Primes.sum_primes_parallel(5000000,System.schedulers_online() ) end) |> elem(0) |> Kernel./(1_000_000))
   end
 
 end
